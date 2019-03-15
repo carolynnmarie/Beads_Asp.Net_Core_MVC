@@ -24,11 +24,10 @@ namespace BeadsInventory.Controllers{
 
         // GET: Beads/Details/5
         public async Task<IActionResult> Details(int? id){
+            var bead = await _context.Bead.FirstOrDefaultAsync(m => m.ID == id);
             if (id == null){
                 return NotFound();
             }
-            var bead = await _context.Bead
-                .FirstOrDefaultAsync(m => m.ID == id);
             if (bead == null){
                 return NotFound();
             }
@@ -56,10 +55,10 @@ namespace BeadsInventory.Controllers{
 
         // GET: Beads/Edit/5
         public async Task<IActionResult> Edit(int? id){
+            var bead = await _context.Bead.FindAsync(id);
             if (id == null){
                 return NotFound();
             }
-            var bead = await _context.Bead.FindAsync(id);
             if (bead == null){
                 return NotFound();
             }
@@ -93,11 +92,10 @@ namespace BeadsInventory.Controllers{
 
         // GET: Beads/Delete/5
         public async Task<IActionResult> Delete(int? id){
+            var bead = await _context.Bead.FirstOrDefaultAsync(m => m.ID == id);
             if (id == null){
                 return NotFound();
             }
-            var bead = await _context.Bead
-                .FirstOrDefaultAsync(m => m.ID == id);
             if (bead == null){
                 return NotFound();
             }
